@@ -33,3 +33,6 @@ class Task:
         if self.start_time is not None:
             return self.start_time - self.arrival_time
         return 0
+    
+    def __str__(self) -> str:
+        return f'ID: {self.id}, Priority: {self.priority}, Arrival: {self.arrival_time}, Start: {self.start_time}, Finish: {self.finish_time}'
