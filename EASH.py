@@ -2,6 +2,7 @@ from MLFQ import MLFQ
 from EDF import EDF
 from WRR import WRR
 from PPOAgent import PPOAgent
+import copy
 
 class EASH:
     def __init__(self, input_dim, output_dim):
@@ -30,10 +31,10 @@ class EASH:
         self.current_task = None
 
     def add_task(self, task):
-        self.tasks.append(task)
-        self.mlfq.add_task(task)
-        self.edf.add_task(task)
-        self.wrr.add_task(task)
+        self.tasks.append(copy.deepcopy(task))
+        self.mlfq.add_task(copy.deepcopy(task))
+        self.edf.add_task(copy.deepcopy(task))
+        self.wrr.add_task(copy.deepcopy(task))
 
     def schedule(self):
         state = []
